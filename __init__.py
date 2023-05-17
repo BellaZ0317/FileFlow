@@ -160,9 +160,7 @@ def new_page(error):
 	if app.debug:
 		raise Exception("404 ERROR!!")
 		#For debugging!!
-    msg = Message("404 error on site? "+error,
-                  sender="admin@fileflow.bella.me",
-                  recipients=["abigailzhong219@gmail.com"])
+    msg = Message("404 error on site? "+error, sender="admin@fileflow.bella.me", recipients=["abigailzhong219@gmail.com"])
 	mail.send(msg)
 	print "EMAIL SENT!"
 	return render_template('error.html', error=404)
