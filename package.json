@@ -7,6 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Bella Zhong",
+  "repository": {
+     "type":"git",
+     "url" : "https://github.com/bellaz0317/fileflow"
+    },
+  "bugs": {
+      "url": "https://github.com/bellaz0317/fileflow/issues/"
+  },
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.12",
