@@ -5,7 +5,6 @@ NAME: FileFlow
 DEBUG: True
 
 MANDRILL_USERNAME:
-
 MANDRILL_KEY:
 
 
