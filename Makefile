@@ -28,7 +28,7 @@ jsx:
 	jsx --watch static/jsx static/js
 
 run:
-	python fileflow/__init__.py
+	python fileflow/routing.py
 
 setup: clear
 	virtualenv venv
