@@ -9,22 +9,20 @@ var gulp = require('gulp'),
 
 // tasks
 gulp.task('transform', function () {
-  return gulp.src('./fileflow/static/jsx/app.js')
+  return gulp.src('./fileflow/static/jsx/app.jsx')
     .pipe(browserify({transform: ['reactify']}))
     .pipe(gulp.dest('./fileflow/static/js'))
     .pipe(size());
 });
 
-process.env.NODE_ENV = 'development' ;
 
-/*
 gulp.task('clean', function () {
   return gulp.src(['./fileflow/static/scripts/js'], {read: false})
     .pipe(clean());
 });
-*/
+
 
 gulp.task('default', /*['clean'],*/ function () {
   gulp.start('transform');
-  gulp.watch('./fileflow/static/jsx/app.js', ['transform']);
+  gulp.watch('./fileflow/static/jsx/app.jsx', ['transform']);
 });

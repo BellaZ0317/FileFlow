@@ -141,7 +141,7 @@ var FileForm = React.createClass({displayName: "FileForm",
     reader.onload = function(upload) {
       self.setState({
         data_uri: upload.target.result,
-      });
+      })
     };
     reader.readAsDataURL(file);
   },
@@ -149,18 +149,20 @@ var FileForm = React.createClass({displayName: "FileForm",
   render: function() {
     // since JSX is case sensitive, be sure to use 'encType'
     return (
-      React.createElement("form", {onSubmit: this.handleSubmit, encType: "multipart/form-data"}, 
-        React.createElement("p", null, "hello there"), 
-        React.createElement("input", {type: "file", onChange: this.handleFile})
+      React.createElement("form", {id: "create-form", onSubmit: this.handleSubmit, encType: "multipart/form-data"}, 
+
+        React.createElement("input", {type: "number", name: "space", id: "reserve", placeholder: "e.g. '32' "}), 
+        React.createElement("input", {type: "file", name: "file", onChange: this.handleFile}), 
+
+        React.createElement("input", {id: "create-button", type: "submit", value: "upload", class: "radius button", style: "font-family:Pacifico ; font-size:2em"})
       )
     );
-  },
+  }
 });
 
 React.render(
     React.createElement(FileForm, null),
     document.getElementById('FileForm')
-    
 );
 
 
