@@ -118,17 +118,35 @@ React.render(
 // this creates a React component that can be used in other components or
 // used directly on the page with React.renderComponent
 var FileForm = React.createClass({
-  // since we are starting off without any data, there is no initial value
-  getInitialState: function() {
-    return {
-      data_uri: null,
-    };
+    // since we are starting off without any data, there is no initial value
+    getInitialState: function() {
+        return {
+            task_id: 0,
+            data_uri: null,
+            progress: "Select an integer to map your file"
+        };
   },
   // prevent form from submitting; we are going to capture the file contents
   handleSubmit: function(e) {
     e.preventDefault();
     console.log('file submitted!!');
     console.log(e);
+  },
+  // when an int is passed into our component, we want to handle the click,
+  // and check if the number is reserved on our webserver
+  handleInt: function(e){
+      var self = this;
+      //console.log(e.target.value)
+      // find if number is taken
+      $.get( "/api/_find_number", function(data) {
+          // e.g. 62 is taken if in debug mode
+          if (data.result === parseInt(e.target.value)){
+            self.setState({progress: "that's taken"})
+        } else {
+            self.setState({progress: "you're good"})
+        }
+      });
+
   },
   // when a file is passed to the input field, retrieve the contents as a
   // base64-encoded data URI and save it to the component's state
@@ -140,7 +158,7 @@ var FileForm = React.createClass({
     reader.onload = function(upload) {
       self.setState({
         data_uri: upload.target.result,
-      })
+      });
     };
     reader.readAsDataURL(file);
   },
@@ -150,10 +168,11 @@ var FileForm = React.createClass({
     return (
       <form id="create-form" onSubmit={this.handleSubmit} encType="multipart/form-data">
 
-        <input type="number" name="space" id="reserve" placeholder="e.g. '32' "/>
+        <input type="number" name="space" onChange={this.handleInt} id="reserve" placeholder="e.g. '32' "/>
         <input type="file" name="file" onChange={this.handleFile}/>
-
-        <input id="create-button" type="submit" value="upload" class="radius button" style="font-family:Pacifico ; font-size:2em"/>
+        <p>value: {this.state.progress}</p>
+        <p>task_id: {this.state.task_id}</p>
+        <p>data_uri: {this.state.data_uri}</p>
       </form>
     );
   }
@@ -162,4 +181,4 @@ var FileForm = React.createClass({
 React.render(
     <FileForm/>,
     document.getElementById('FileForm')
-);
+)
