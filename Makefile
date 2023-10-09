@@ -28,6 +28,7 @@ jsx:
 	jsx --watch static/jsx static/js
 
 run:
+	clear
 	python fileflow/server.py
 
 setup: clear
