@@ -1,0 +1,30 @@
+{
+  "name": "FileFlow",
+  "version": "1.0.1",
+  "authors": [
+    "Bella Zhong <contact@bellaz0317.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "fileflow/static/bower_components",
+    "test",
+    "tests",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2",
+    "jquery": "~2.1.4",
+    "react": "~0.14.0",
+    "foundation": "~5.5.3"
+  },
+  "homepage": "https://github.com/BellaZ0317/FileFlow",
+  "description": "move your thing like it ain't no thang",
+  "main": "fileflow.py",
+  "moduleType": [],
+  "keywords": [
+    "space",
+    "share"
+  ]
+}
